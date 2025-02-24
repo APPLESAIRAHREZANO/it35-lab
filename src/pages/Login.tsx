@@ -1,10 +1,16 @@
 import { 
+      IonAvatar ,
       IonButton,
       IonButtons,
+      IonCol,
       IonContent, 
+      IonGrid ,
       IonHeader, 
+      IonInput,
+      IonInputPasswordToggle ,
       IonMenuButton, 
       IonPage, 
+      IonRow ,
       IonTitle, 
       IonToolbar, 
       useIonRouter
@@ -30,9 +36,53 @@ import {
          <IonButton onClick={() => doLogin()} expand="full">
             Login
         </IonButton>
+
+
+        <div
+          style={{
+            marginTop: '25%',
+          }}
+        >     
+          <IonGrid style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '100%',
+          }}>
+            <IonRow >
+
+
+            <IonCol size="8">
+                <IonAvatar style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}>
+                  <img 
+                  style={{
+                    width:'100px',
+                    objectFit:'cover',
+                  }}
+                  alt="Silhouette of a person's head" src="https://stickershop.line-scdn.net/stickershop/v1/product/12913/LINEStorePC/main.png?v=11" />
+                </IonAvatar>
+              </IonCol>
+            </IonRow>
+          </IonGrid>
+          <IonInput label="Username" >
+          </IonInput>
+          <IonInput type="password" label="Password" value="NeverGonnaGiveYouUp">
+            <IonInputPasswordToggle  slot="end"></IonInputPasswordToggle>
+          </IonInput>
+          <IonButton onClick={() => doLogin()} expand="full">
+            Login
+          </IonButton>
+        </div>
+            
         </IonContent>
       </IonPage>
     );
-  };
+
+  }           
+  
   
   export default Login;
