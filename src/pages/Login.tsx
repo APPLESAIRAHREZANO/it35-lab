@@ -1,48 +1,41 @@
 import { 
-      IonAvatar ,
-      IonButton,
-      IonButtons,
+  IonAvatar,
+    IonButton,
+    IonButtons,
       IonCol,
       IonContent, 
-      IonGrid ,
+      IonGrid, 
       IonHeader, 
-      IonInput,
-      IonInputPasswordToggle ,
+      IonInput, 
+      IonInputPasswordToggle, 
       IonMenuButton, 
       IonPage, 
-      IonRow ,
+      IonRow, 
       IonTitle, 
       IonToolbar, 
       useIonRouter
   } from '@ionic/react';
-  
-  const Login: React.FC = () => { 
 
-      const navigation = useIonRouter(); 
+  const Login: React.FC = () => {
+    const navigation = useIonRouter();
 
-      const doLogin = () => {
+    const doLogin = () => {
         navigation.push('/it35-lab/app','forward','replace');
-      }
-        
+    }
     return (
       <IonPage>
         <IonHeader>
-          <IonToolbar>            
+          <IonToolbar>
             <IonTitle>Login</IonTitle>
           </IonToolbar>
         </IonHeader>
-
         <IonContent className='ion-padding'>
-         <IonButton onClick={() => doLogin()} expand="full">
-            Login
-        </IonButton>
-
-
+        
         <div
           style={{
             marginTop: '25%',
           }}
-        >     
+        >
           <IonGrid style={{
             display: 'flex',
             alignItems: 'center',
@@ -50,9 +43,8 @@ import {
             height: '100%',
           }}>
             <IonRow >
-
-
-            <IonCol size="8">
+              
+              <IonCol size="8">
                 <IonAvatar style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -70,7 +62,7 @@ import {
           </IonGrid>
           <IonInput label="Username" >
           </IonInput>
-          <IonInput type="password" label="Password" value="NeverGonnaGiveYouUp">
+          <IonInput type="password" label="Password" value="Stephanie">
             <IonInputPasswordToggle  slot="end"></IonInputPasswordToggle>
           </IonInput>
           <IonButton onClick={() => doLogin()} expand="full">
@@ -81,8 +73,6 @@ import {
         </IonContent>
       </IonPage>
     );
+  };
 
-  }           
-  
-  
-  export default Login;
+export default Login;
