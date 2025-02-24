@@ -47,12 +47,12 @@ const Home: React.FC = () => {
           
         </IonTabBar>
         <IonRouterOutlet>
-            < Route exact path="/it35-lav/app/home/feed" render={Feed} />
-            < Route exact path="/it35-lav/app/home/search" render={Search} />
-            < Route exact path="/it35-lav/app/home/favorites" render={Favorites} />
+            < Route exact path="/it35-lab/app/home/feed" render={Feed} />
+            < Route exact path="/it35-lab/app/home/search" render={Search} />
+            < Route exact path="/it35-lab/app/home/favorites" render={Favorites} />
 
-            < Route exact path="/it35-lav/app/home">
-               <Redirect to="/it35-lav/app/home/feed" />
+            < Route exact path="/it35-lab/app/home">
+               <Redirect to="/it35-lab/app/home/feed" />
             </Route>
 
         </IonRouterOutlet>
