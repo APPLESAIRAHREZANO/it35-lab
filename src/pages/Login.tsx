@@ -10,7 +10,7 @@ import {
   IonToast,  
   useIonRouter
 } from '@ionic/react';
-
+import { logoIonic } from 'ionicons/icons';
 import { useState } from 'react';
 import { supabase } from './utils/supabaseClient';
 
@@ -71,7 +71,7 @@ const Login: React.FC = () => {
             }}
           >
           <img 
-             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGcpCTzuSsxA40xe0DUjCTQunuN_qVl6vtTg&s" 
+             src="https://img.artpal.com/878542/2-22-5-5-16-5-39m.jpg" 
              alt="User Avatar" 
              style={{ width: '100%', height: '100%' }} 
           />
