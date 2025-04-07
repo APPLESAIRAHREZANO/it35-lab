@@ -70,10 +70,10 @@ const Login: React.FC = () => {
               overflow: 'hidden' 
             }}
           >
-            <IonIcon 
-              icon={logoIonic}
-              color='primary'
-              style={{ fontSize: '120px', color: '#6c757d' }} 
+            <img 
+               src="https://img.artpal.com/878542/2-22-5-5-16-5-39m.jpg" 
+               alt="User Avatar" 
+               style={{ width: '100%', height: '100%' }} 
             />
           </IonAvatar>
           <h1 style={{
