@@ -71,7 +71,7 @@ const Login: React.FC = () => {
             }}
           >
           <img 
-             src="https://i.pinimg.com/736x/d1/2f/dc/d12fdc235cf8cc65639b077a454a0313.jpg" 
+             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGcpCTzuSsxA40xe0DUjCTQunuN_qVl6vtTg&s" 
              alt="User Avatar" 
              style={{ width: '100%', height: '100%' }} 
           />
