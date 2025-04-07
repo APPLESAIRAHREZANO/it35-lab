@@ -10,7 +10,7 @@ import {
   IonToast,  
   useIonRouter
 } from '@ionic/react';
-import { logoIonic } from 'ionicons/icons';
+
 import { useState } from 'react';
 import { supabase } from './utils/supabaseClient';
 
