@@ -30,7 +30,6 @@ const AlertBox: React.FC<{ message: string; isOpen: boolean; onClose: () => void
     />
   );
 };
-
 const Register: React.FC = () => {
     const [username, setUsername] = useState('');
     const [firstName, setFirstName] = useState('');
