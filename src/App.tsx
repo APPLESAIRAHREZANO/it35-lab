@@ -36,6 +36,7 @@ import Menu from './pages/Menu';
 import Register from './pages/Register';
 
 setupIonicReact();
+
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
@@ -47,5 +48,4 @@ const App: React.FC = () => (
     </IonReactRouter>
   </IonApp>
 );
-
 export default App;

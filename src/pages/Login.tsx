@@ -71,7 +71,7 @@ const Login: React.FC = () => {
             }}
           >
           <img 
-             src="https://img.artpal.com/878542/2-22-5-5-16-5-39m.jpg" 
+             src="https://quizoto.com/assets/img/quiz-images/which-naruto-character-are-you-feature.jpg" 
              alt="User Avatar" 
              style={{ width: '100%', height: '100%' }} 
           />

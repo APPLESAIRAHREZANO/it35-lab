@@ -30,8 +30,10 @@ const AlertBox: React.FC<{ message: string; isOpen: boolean; onClose: () => void
     />
   );
 };
+
 const Register: React.FC = () => {
     const [username, setUsername] = useState('');
+   
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -76,6 +78,7 @@ const Register: React.FC = () => {
                 {
                     username,
                     user_email: email,
+                   
                     user_password: hashedPassword,
                 },
             ]);
