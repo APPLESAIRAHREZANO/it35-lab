@@ -12,7 +12,7 @@ import {
 } from '@ionic/react';
 import { logoIonic } from 'ionicons/icons';
 import { useState } from 'react';
-import { supabase } from './utils/supabaseClient';
+import { supabase } from '../utils/supabaseClient';
 
 const AlertBox: React.FC<{ message: string; isOpen: boolean; onClose: () => void }> = ({ message, isOpen, onClose }) => {
   return (
@@ -70,11 +70,12 @@ const Login: React.FC = () => {
               overflow: 'hidden' 
             }}
           >
-          <img 
-             src="https://quizoto.com/assets/img/quiz-images/which-naruto-character-are-you-feature.jpg" 
-             alt="User Avatar" 
-             style={{ width: '100%', height: '100%' }} 
-          />
+            <img 
+              src="https://tse3.mm.bing.net/th?id=OIP.rXXBhFjnWJ1A54yLfSVp-AHaD5&pid=Api&P=0&h=180" 
+              alt="Custom Logo" 
+              style={{ width: '120px', height: 'auto' }} 
+            />
+
           </IonAvatar>
           <h1 style={{
             display: 'flex',
