@@ -71,7 +71,7 @@ const Login: React.FC = () => {
             }}
           >
             <img 
-              src="https://tse3.mm.bing.net/th?id=OIP.rXXBhFjnWJ1A54yLfSVp-AHaD5&pid=Api&P=0&h=180" 
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsMXhczM3_Y4NB_tIVTFlzWAX755SVtATCiCaHu1kYGjYDKpPJg4QFdWiARytOMP333DE&usqp=CAU" 
               alt="Custom Logo" 
               style={{ width: '120px', height: 'auto' }} 
             />
