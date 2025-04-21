@@ -26,5 +26,5 @@ const Feed: React.FC = () => {
     </IonPage>
   );
 };
-
+ 
 export default Feed;
