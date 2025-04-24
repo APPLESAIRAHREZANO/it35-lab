@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
-import { IonApp, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonInput, IonLabel, IonModal, IonFooter, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonAlert, IonText, IonAvatar, IonCol, IonGrid, IonRow, IonIcon, IonPopover } from '@ionic/react';
+import {
+  IonApp, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonInput, IonLabel,
+  IonModal, IonFooter, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle,
+  IonAlert, IonText, IonAvatar, IonCol, IonGrid, IonRow, IonIcon, IonPopover
+} from '@ionic/react';
 import { User } from '@supabase/supabase-js';
 import { supabase } from '../utils/supabaseClient';
-import { colorFill, pencil, trash } from 'ionicons/icons';
+import { pencil } from 'ionicons/icons';
 
 interface Post {
   post_id: string;
@@ -50,33 +54,25 @@ const FeedContainer = () => {
 
   const createPost = async () => {
     if (!postContent || !user || !username) return;
-  
-    // Fetch avatar URL
     const { data: userData, error: userError } = await supabase
       .from('users')
       .select('user_avatar_url')
       .eq('user_id', user.id)
       .single();
-  
-    if (userError) {
-      console.error('Error fetching user avatar:', userError);
-      return;
-    }
-  
+
+    if (userError) return;
+
     const avatarUrl = userData?.user_avatar_url || 'https://ionicframework.com/docs/img/demos/avatar.svg';
-  
-    // Insert post with avatar URL
+
     const { data, error } = await supabase
       .from('posts')
-      .insert([
-        { post_content: postContent, user_id: user.id, username, avatar_url: avatarUrl }
-      ])
+      .insert([{ post_content: postContent, user_id: user.id, username, avatar_url: avatarUrl }])
       .select('*');
-  
+
     if (!error && data) {
       setPosts([data[0] as Post, ...posts]);
     }
-  
+
     setPostContent('');
   };
 
@@ -110,41 +106,62 @@ const FeedContainer = () => {
 
   return (
     <>
-      <IonContent>
+      <IonContent className="ion-padding">
         {user ? (
           <>
-            <IonCard>
+            {/* Create Post */}
+            <IonCard style={{ borderRadius: '15px', boxShadow: '0 2px 10px rgba(0,0,0,0.08)' }}>
               <IonCardHeader>
-                <IonCardTitle>Create Post</IonCardTitle>
+                <IonCardTitle style={{ fontSize: '20px' }}>Create a Post</IonCardTitle>
               </IonCardHeader>
               <IonCardContent>
                 <IonInput
+                  placeholder="What's on your mind?"
                   value={postContent}
-                  onIonChange={e => setPostContent(e.detail.value!)}
-                  placeholder="Write a post..."
+                  onIonChange={(e) => setPostContent(e.detail.value!)}
+                  fill="outline"
+                  style={{
+                    borderRadius: '10px',
+                    fontSize: '15px',
+                    paddingInline: '10px',
+                    marginBottom: '12px'
+                  }}
                 />
+                <IonButton expand="block" shape="round" onClick={createPost}>
+                  Post
+                </IonButton>
               </IonCardContent>
-              <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '0.5rem' }}>
-                <IonButton onClick={createPost}>Post</IonButton>
-              </div>
             </IonCard>
-  
-            {posts.map(post => (
-              <IonCard key={post.post_id} style={{ marginTop: '2rem' }}>
+
+            {/* Display Posts */}
+            {posts.map((post) => (
+              <IonCard
+                key={post.post_id}
+                style={{
+                  marginTop: '1.5rem',
+                  borderRadius: '15px',
+                  boxShadow: '0 4px 14px rgba(0, 0, 0, 0.07)',
+                }}
+              >
                 <IonCardHeader>
-                  <IonRow>
-                    <IonCol size="1.85">
-                      <IonAvatar>
-                        <img alt={post.username} src={post.avatar_url} />
+                  <IonRow className="ion-align-items-center">
+                    <IonCol size="auto">
+                      <IonAvatar style={{ width: '48px', height: '48px' }}>
+                        <img src={post.avatar_url} alt={post.username} />
                       </IonAvatar>
                     </IonCol>
                     <IonCol>
-                      <IonCardTitle style={{ marginTop: '10px' }}>{post.username}</IonCardTitle>
-                      <IonCardSubtitle>{new Date(post.post_created_at).toLocaleString()}</IonCardSubtitle>
+                      <IonCardTitle style={{ fontSize: '17px', marginBottom: '2px' }}>
+                        {post.username}
+                      </IonCardTitle>
+                      <IonCardSubtitle style={{ fontSize: '12px', color: '#666' }}>
+                        {new Date(post.post_created_at).toLocaleString()}
+                      </IonCardSubtitle>
                     </IonCol>
                     <IonCol size="auto">
                       <IonButton
                         fill="clear"
+                        size="small"
                         onClick={(e) =>
                           setPopoverState({
                             open: true,
@@ -153,18 +170,19 @@ const FeedContainer = () => {
                           })
                         }
                       >
-                        <IonIcon color="secondary" icon={pencil} />
+                        <IonIcon icon={pencil} />
                       </IonButton>
                     </IonCol>
                   </IonRow>
                 </IonCardHeader>
-  
                 <IonCardContent>
-                  <IonText style={{ color: 'black' }}>
-                    <h1>{post.post_content}</h1>
+                  <IonText>
+                    <p style={{ fontSize: '15px', whiteSpace: 'pre-wrap', color: '#222' }}>
+                      {post.post_content}
+                    </p>
                   </IonText>
                 </IonCardContent>
-  
+
                 <IonPopover
                   isOpen={popoverState.open && popoverState.postId === post.post_id}
                   event={popoverState.event}
@@ -199,26 +217,28 @@ const FeedContainer = () => {
           <IonLabel>Loading...</IonLabel>
         )}
       </IonContent>
-  
+
+      {/* Edit Modal */}
       <IonModal isOpen={isModalOpen} onDidDismiss={() => setIsModalOpen(false)}>
         <IonHeader>
           <IonToolbar>
             <IonTitle>Edit Post</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonContent>
+        <IonContent className="ion-padding">
           <IonInput
             value={postContent}
-            onIonChange={e => setPostContent(e.detail.value!)}
+            onIonChange={(e) => setPostContent(e.detail.value!)}
             placeholder="Edit your post..."
+            fill="outline"
           />
         </IonContent>
-        <IonFooter>
-          <IonButton onClick={savePost}>Save</IonButton>
-          <IonButton onClick={() => setIsModalOpen(false)}>Cancel</IonButton>
+        <IonFooter className="ion-padding">
+          <IonButton expand="block" onClick={savePost}>Save</IonButton>
+          <IonButton expand="block" fill="outline" onClick={() => setIsModalOpen(false)}>Cancel</IonButton>
         </IonFooter>
       </IonModal>
-  
+
       <IonAlert
         isOpen={isAlertOpen}
         onDidDismiss={() => setIsAlertOpen(false)}
@@ -228,8 +248,6 @@ const FeedContainer = () => {
       />
     </>
   );
-   
-
 };
 
 export default FeedContainer;
