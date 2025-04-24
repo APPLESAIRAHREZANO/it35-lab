@@ -1,15 +1,13 @@
-import {
+import { 
   IonAlert,
   IonAvatar,
   IonButton,
-  IonCard,
-  IonCardContent,
-  IonContent,
-  IonIcon,
-  IonInput,
-  IonInputPasswordToggle,
-  IonPage,
-  IonToast,
+  IonContent, 
+  IonIcon, 
+  IonInput, 
+  IonInputPasswordToggle,  
+  IonPage,  
+  IonToast,  
   useIonRouter
 } from '@ionic/react';
 import { logoIonic } from 'ionicons/icons';
@@ -45,67 +43,76 @@ const Login: React.FC = () => {
       return;
     }
 
-    setShowToast(true);
+    setShowToast(true); 
     setTimeout(() => {
       navigation.push('/it35-lab/app', 'forward', 'replace');
-    }, 1000);
+    }, 300);
   };
-
+  
   return (
     <IonPage>
-      <IonContent className="ion-padding" fullscreen>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-          <IonCard style={{ width: '90%', maxWidth: '400px', padding: '20px', textAlign: 'center', borderRadius: '20px', boxShadow: '0px 4px 12px rgba(0,0,0,0.1)' }}>
-            <IonCardContent>
-              <IonAvatar style={{ margin: '0 auto 20px', width: '100px', height: '100px' }}>
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsMXhczM3_Y4NB_tIVTFlzWAX755SVtATCiCaHu1kYGjYDKpPJg4QFdWiARytOMP333DE&usqp=CAU"
-                  alt="Custom Logo"
-                  style={{ width: '100%', height: '100%' }}
-                />
-              </IonAvatar>
+      <IonContent className='ion-padding'>
+        <div style={{
+          display: 'flex',
+          flexDirection:'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop:'25%'
+        }}>
+          <IonAvatar
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '150px',
+              height: '150px',
+              borderRadius: '50%', 
+              overflow: 'hidden' 
+            }}
+          >
+            <img 
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsMXhczM3_Y4NB_tIVTFlzWAX755SVtATCiCaHu1kYGjYDKpPJg4QFdWiARytOMP333DE&usqp=CAU" 
+              alt="Custom Logo" 
+              style={{ width: '120px', height: 'auto' }} 
+            />
 
-              <h2 style={{ marginBottom: '20px', fontWeight: 'bold' }}>User Login</h2>
-
-              <IonInput
-                label="Email"
-                labelPlacement="floating"
-                fill="outline"
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onIonChange={e => setEmail(e.detail.value!)}
-              />
-              <IonInput
-                style={{ marginTop: '15px' }}
-                fill="outline"
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onIonChange={e => setPassword(e.detail.value!)}
-              >
-                <IonInputPasswordToggle slot="end" />
-              </IonInput>
-
-              <IonButton expand="block" shape="round" style={{ marginTop: '20px' }} onClick={doLogin}>
-                Login
-              </IonButton>
-
-              <IonButton
-                routerLink="/it35-lab/register"
-                expand="block"
-                fill="clear"
-                shape="round"
-                style={{ marginTop: '10px', fontSize: '14px' }}
-              >
-                Don’t have an account? <strong style={{ marginLeft: '5px' }}>Register</strong>
-              </IonButton>
-            </IonCardContent>
-          </IonCard>
+          </IonAvatar>
+          <h1 style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>USER LOGIN</h1>
+          <IonInput
+            label="Email" 
+            labelPlacement="floating" 
+            fill="outline"
+            type="email"
+            placeholder="Enter Email"
+            value={email}
+            onIonChange={e => setEmail(e.detail.value!)}
+          />
+          <IonInput style={{ marginTop:'10px' }}      
+            fill="outline"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onIonChange={e => setPassword(e.detail.value!)}
+          >
+            <IonInputPasswordToggle slot="end"></IonInputPasswordToggle>
+          </IonInput>
         </div>
+        <IonButton onClick={doLogin} expand="full" shape='round'>
+          Login
+        </IonButton>
 
+        <IonButton routerLink="/it35-lab/register" expand="full" fill="clear" shape='round'>
+          Don't have an account? Register here
+        </IonButton>
+
+        {/* Reusable AlertBox Component */}
         <AlertBox message={alertMessage} isOpen={showAlert} onClose={() => setShowAlert(false)} />
 
+        {/* IonToast for success message */}
         <IonToast
           isOpen={showToast}
           onDidDismiss={() => setShowToast(false)}
@@ -119,4 +126,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default Login; 
