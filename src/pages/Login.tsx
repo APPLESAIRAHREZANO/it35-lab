@@ -57,14 +57,18 @@ const Login: React.FC = () => {
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
           <IonCard style={{ width: '90%', maxWidth: '400px', padding: '20px', textAlign: 'center', borderRadius: '20px', boxShadow: '0px 4px 12px rgba(0,0,0,0.1)' }}>
             <IonCardContent>
-              <IonAvatar style={{ margin: '0 auto 20px', width: '100px', height: '100px' }}>
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsMXhczM3_Y4NB_tIVTFlzWAX755SVtATCiCaHu1kYGjYDKpPJg4QFdWiARytOMP333DE&usqp=CAU"
-                  alt="Custom Logo"
-                  style={{ width: '100%', height: '100%' }}
-                />
-              </IonAvatar>
-
+            <IonAvatar style={{ margin: '0 auto 20px', width: '100px', height: '100px' }}>
+ <img
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsMXhczM3_Y4NB_tIVTFlzWAX755SVtATCiCaHu1kYGjYDKpPJg4QFdWiARytOMP333DE&usqp=CAU"
+    alt="Custom Logo"
+    style={{
+      width: '100%',
+      height: '100%',
+      border: '3px solid #3880ff', // <-- border added here (you can change the color and thickness)
+      borderRadius: '50%' // <-- makes sure it's still perfectly round
+    }}
+  />
+</IonAvatar>
               <h2 style={{ marginBottom: '20px', fontWeight: 'bold' }}>User Login</h2>
 
               <IonInput
