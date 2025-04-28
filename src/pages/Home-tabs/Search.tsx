@@ -1,127 +1,151 @@
-import {
-  IonAccordion,
-  IonAccordionGroup,
-  IonContent,
-  IonHeader,
-  IonItem,
-  IonLabel,
-  IonMenuButton,
-  IonPage,
-  IonTitle,
+import { 
+  IonButtons,
+  IonContent, 
+  IonHeader, 
+  IonMenuButton, 
+  IonPage, 
+  IonTitle, 
   IonToolbar,
-  IonButtons
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardSubtitle,
+  IonCardContent,
+  IonItem,
+  IonAvatar
 } from '@ionic/react';
-import React from 'react';
 
-function MotivationalQuotes() {
-  return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar color="primary">
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>Motivational Quotes</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+const feed = [
+  {
+    id: 1,
+    title: "Goku's Battle to Protect Earth",
+    author: "Akira Toriyama",
+    date: "2025-04-25",
+    time: "10:00 AM",
+    description: "Goku continues his fierce battles against powerful foes, striving to protect Earth with his incredible strength and unwavering spirit.",
+    imageUrl: "https://c4.wallpaperflare.com/wallpaper/765/712/1011/son-goku-dbz-anime-boy-anime-guy-wallpaper-thumb.jpg"
+  },
+  {
+    id: 2,
+    title: "Asuka's Journey in the Eva Unit 02",
+    author: "Hideaki Anno",
+    date: "2025-04-24",
+    time: "02:30 PM",
+    description: "Asuka defends humanity in her Eva Unit 02, facing her deepest fears and proving her worth as an Eva pilot.",
+    imageUrl: "https://images7.alphacoders.com/789/789110.png"
+  },
+  {
+    id: 3,
+    title: "Daisuke's Mysterious Detective Work",
+    author: "Yukimaru Kasuri",
+    date: "2025-04-23",
+    time: "11:15 AM",
+    description: "Daisuke embarks on a thrilling journey to uncover secrets hidden deep within the city's mysteries, using his sharp detective skills.",
+    imageUrl: "https://i.pinimg.com/736x/5b/7a/f1/5b7af15e857b4b6b9d4f6301def978b1.jpg"
+  },
+  {
+    id: 4,
+    title: "Hikari's Adventures in the Digital World",
+    author: "Yokoi Chika",
+    date: "2025-04-22",
+    time: "03:45 PM",
+    description: "Hikari journeys into the Digital World, teaming up with her Digimon partner to fight evil forces threatening both worlds.",
+    imageUrl: "https://images4.alphacoders.com/789/thumb-1920-789799.png"
+  },
+  {
+    id: 5,
+    title: "Naruto's Legacy: A Hokage's Duty",
+    author: "Masashi Kishimoto",
+    date: "2025-04-21",
+    time: "01:00 PM",
+    description: "Naruto, now Hokage, must balance his responsibilities to his village while keeping his family safe and maintaining peace in the ninja world.",
+    imageUrl: "https://wallpapercg.com/download/naruto-uzumaki-3840x2814-26605.jpg"
+  },
+  {
+    id: 6,
+    title: "Astro Boy: The Robot Revolution Begins",
+    author: "Osamu Tezuka",
+    date: "2025-04-20",
+    time: "05:20 PM",
+    description: "Astro Boy fights for justice in a futuristic world where robots and humans coexist, battling the rise of rogue machines.",
+    imageUrl: "https://images7.alphacoders.com/740/740420.jpg"
+  },
+  {
+    id: 7,
+    title: "Daiki's Path to Becoming a Hero",
+    author: "Tetsuya Nishio",
+    date: "2025-04-19",
+    time: "06:00 PM",
+    description: "Daiki aspires to become a hero and faces various challenges along the way, learning what it truly means to be brave and selfless.",
+    imageUrl: "https://i.pinimg.com/736x/dd/ab/8e/ddab8ea8cab479648610ed74baf7e978.jpg"
+  },
+  {
+    id: 8,
+    title: "Death Note: Light's Final Game",
+    author: "Tsugumi Ohba",
+    date: "2025-04-18",
+    time: "12:00 PM",
+    description: "Light Yagami uses the Death Note to rid the world of criminals, but faces the ultimate moral dilemma as his plan starts to spiral out of control.",
+    imageUrl: "https://i.redd.it/xtjyc6g4omk81.jpg"
+  },
+  {
+    id: 9,
+    title: "Kouki's Challenge: The Last Fight",
+    author: "Yoshinobu Akita",
+    date: "2025-04-17",
+    time: "09:00 AM",
+    description: "Kouki faces the final battle in his quest to uncover hidden truths, battling enemies and overcoming great personal struggles.",
+    imageUrl: "https://i.pinimg.com/736x/7f/5c/23/7f5c231e0087864ecfba9a9618d9ed10.jpg"
+  },
+  {
+    id: 10,
+    title: "Stitch's Galactic Adventures",
+    author: "Chris Sanders",
+    date: "2025-04-16",
+    time: "04:30 PM",
+    description: "Stitch embarks on new galactic adventures, navigating space while making new friends and fighting for the good of the universe.",
+    imageUrl: "https://i.pinimg.com/736x/cf/03/d6/cf03d6f4b5799bc9a8a6d0a89bb9079e.jpg"
+  }
+];
 
-      <IonContent className="ion-padding" fullscreen>
-        <IonAccordionGroup>
+const cardColors = ["light", "primary", "secondary", "tertiary", "success", "warning", "danger", "medium", "dark"];
 
-          <IonAccordion value="first">
-            <IonItem slot="header" color="success">
-              <IonLabel style={{ fontWeight: 'bold', fontSize: '18px' }}>Believe you can and you're halfway there.</IonLabel>
+const Search: React.FC = () => (
+  <IonPage>
+    <IonHeader>
+      <IonToolbar>
+        <IonButtons slot="start">
+          <IonMenuButton />
+        </IonButtons>
+        <IonTitle>Cartoon & Anime Search</IonTitle>
+      </IonToolbar>
+    </IonHeader>
+
+    <IonContent fullscreen className="ion-padding">
+      {feed.map(({ id, title, author, date, time, description, imageUrl }, index) => (
+        <IonCard key={id} color={cardColors[index % cardColors.length]} className="custom-card">
+          <IonCardHeader>
+            <IonItem lines="none">
+              <IonAvatar slot="start">
+                <img src={imageUrl} alt={title} style={{ width: '50px', height: '50px', objectFit: 'cover' }} />
+              </IonAvatar>
+              <div>
+                <IonCardTitle style={{ fontSize: '18px', fontWeight: 'bold', color: '#ffffff' }}>
+                  {title}
+                </IonCardTitle>
+                <IonCardSubtitle style={{ color: '#e0e0e0' }}>
+                  {author} • {date} • {time}
+                </IonCardSubtitle>
+              </div>
             </IonItem>
-            <div className="ion-padding" slot="content">
-              <p>🌟 Confidence is the first step toward success. Start strong!</p>
-            </div>
-          </IonAccordion>
+          </IonCardHeader>
+          <IonCardContent style={{ color: '#f5f5f5' }}>
+            {description}
+          </IonCardContent>
+        </IonCard>
+      ))}
+    </IonContent>
+  </IonPage>
+);
 
-          <IonAccordion value="second">
-            <IonItem slot="header" color="tertiary">
-              <IonLabel style={{ fontWeight: 'bold', fontSize: '18px' }}>Success is not final, failure is not fatal: It is the courage to continue that counts.</IonLabel>
-            </IonItem>
-            <div className="ion-padding" slot="content">
-              <p>🔥 Keep pushing forward, no matter what happens!</p>
-            </div>
-          </IonAccordion>
-
-          <IonAccordion value="third">
-            <IonItem slot="header" color="warning">
-              <IonLabel style={{ fontWeight: 'bold', fontSize: '18px' }}>Dream big and dare to fail.</IonLabel>
-            </IonItem>
-            <div className="ion-padding" slot="content">
-              <p>💭 Big dreams require big courage. Don't be afraid of the risks!</p>
-            </div>
-          </IonAccordion>
-
-          <IonAccordion value="fourth">
-            <IonItem slot="header" color="danger">
-              <IonLabel style={{ fontWeight: 'bold', fontSize: '18px' }}>Don't watch the clock; do what it does. Keep going.</IonLabel>
-            </IonItem>
-            <div className="ion-padding" slot="content">
-              <p>⏰ Time keeps moving—so should you!</p>
-            </div>
-          </IonAccordion>
-
-          <IonAccordion value="fifth">
-            <IonItem slot="header" color="medium">
-              <IonLabel style={{ fontWeight: 'bold', fontSize: '18px' }}>It always seems impossible until it's done.</IonLabel>
-            </IonItem>
-            <div className="ion-padding" slot="content">
-              <p>🏆 Trust the journey. Your future self will thank you!</p>
-            </div>
-          </IonAccordion>
-
-          <IonAccordion value="sixth">
-            <IonItem slot="header" color="primary">
-              <IonLabel style={{ fontWeight: 'bold', fontSize: '18px' }}>Push yourself, because no one else is going to do it for you.</IonLabel>
-            </IonItem>
-            <div className="ion-padding" slot="content">
-              <p>💪 Self-motivation is your superpower!</p>
-            </div>
-          </IonAccordion>
-
-          <IonAccordion value="seventh">
-            <IonItem slot="header" color="success">
-              <IonLabel style={{ fontWeight: 'bold', fontSize: '18px' }}>Your only limit is your mind.</IonLabel>
-            </IonItem>
-            <div className="ion-padding" slot="content">
-              <p>🧠 Think big, achieve bigger!</p>
-            </div>
-          </IonAccordion>
-
-          <IonAccordion value="eighth">
-            <IonItem slot="header" color="dark">
-              <IonLabel style={{ fontWeight: 'bold', fontSize: '18px' }}>Small progress is still progress.</IonLabel>
-            </IonItem>
-            <div className="ion-padding" slot="content">
-              <p>🐢 One step at a time still leads to success.</p>
-            </div>
-          </IonAccordion>
-
-          <IonAccordion value="ninth">
-            <IonItem slot="header" color="warning">
-              <IonLabel style={{ fontWeight: 'bold', fontSize: '18px' }}>The harder you work for something, the greater you'll feel when you achieve it.</IonLabel>
-            </IonItem>
-            <div className="ion-padding" slot="content">
-              <p>🎯 Hard work pays off—always.</p>
-            </div>
-          </IonAccordion>
-
-          <IonAccordion value="tenth">
-            <IonItem slot="header" color="danger">
-              <IonLabel style={{ fontWeight: 'bold', fontSize: '18px' }}>Don’t stop when you’re tired. Stop when you’re done.</IonLabel>
-            </IonItem>
-            <div className="ion-padding" slot="content">
-              <p>🏁 Power through! Victory is waiting at the finish line.</p>
-            </div>
-          </IonAccordion>
-
-        </IonAccordionGroup>
-      </IonContent>
-    </IonPage>
-  );
-}
-
-export default MotivationalQuotes;
+export default Search;
