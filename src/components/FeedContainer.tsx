@@ -120,7 +120,7 @@ const FeedContainer = () => {
     <IonContent className="ion-padding">
       {user ? (
         <>
-          {/* Create Post */}
+ 
           <IonCard>
             <IonCardHeader>
               <IonCardTitle>Share Something ✨</IonCardTitle>
@@ -143,7 +143,6 @@ const FeedContainer = () => {
             </IonCardContent>
           </IonCard>
 
-          {/* Display Posts */}
           {posts.map((post) => (
             <IonCard key={post.post_id}>
               <IonCardHeader>
@@ -180,7 +179,7 @@ const FeedContainer = () => {
                 <IonText>
                   <p>{post.post_content}</p>
                 </IonText>
-                {/* Like Button */}
+               
                 <IonButton
                   fill="clear"
                   size="small"
@@ -226,7 +225,6 @@ const FeedContainer = () => {
         <IonLabel>Loading...</IonLabel>
       )}
 
-      {/* Edit Modal */}
       <IonModal isOpen={isModalOpen} onDidDismiss={() => setIsModalOpen(false)}>
         <IonHeader translucent>
           <IonToolbar color="light">
