@@ -17,7 +17,7 @@ const Favorites: React.FC = () => {
   const favoriteCharacters = [
     {
       name: 'Stitch',
-      image: 'https://ih1.redbubble.net/image.388192615.6682/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg', 
+      image: 'https://i.pinimg.com/originals/c7/32/cc/c732cc59cbc22d704574fe772863e75f.gif',
       reason: 'He shows that even the most chaotic ones can be loving and loyal.'
     },
     {
@@ -27,7 +27,7 @@ const Favorites: React.FC = () => {
     },
     {
       name: 'Gojo Satoru',
-      image: 'https://i.pinimg.com/736x/c9/6d/97/c96d975d0e3a7235725017ecd5f81235.jpg',
+      image: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7df6de16-e030-47e5-baae-04350d5468d5/dhrx4cx-9879cf57-e5ae-47a4-a040-6e5849ad31b2.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzdkZjZkZTE2LWUwMzAtNDdlNS1iYWFlLTA0MzUwZDU0NjhkNVwvZGhyeDRjeC05ODc5Y2Y1Ny1lNWFlLTQ3YTQtYTA0MC02ZTU4NDlhZDMxYjIuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.rSHAnOs-AUwEhmUKdOy8nk0yZE54XNvwoOinZqjgrPs',
       reason: 'His strength and playful personality make him one of the coolest mentors.'
     },
     {
@@ -37,7 +37,7 @@ const Favorites: React.FC = () => {
     },
     {
       name: 'Eren Yeager',
-      image: 'https://i.pinimg.com/474x/70/5d/07/705d07d05b44f0c244a855a510ba521b.jpg',
+      image: 'https://i.pinimg.com/originals/df/2c/30/df2c305eb143c20321b9e625fca51efa.gif',
       reason: 'His evolution and complexity make his journey compelling.'
     },
     {
@@ -47,7 +47,7 @@ const Favorites: React.FC = () => {
     },
     {
       name: 'Killua Zoldyck',
-      image: 'https://m.media-amazon.com/images/I/51C2nPnMvcL._AC_UF894,1000_QL80_.jpg',
+      image: 'https://i.pinimg.com/originals/1e/a8/0e/1ea80e7cea0d429146580c7e91c5b944.gif',
       reason: 'Cool-headed but kind-hearted — one of the best friends in anime.'
     },
     {
@@ -57,7 +57,7 @@ const Favorites: React.FC = () => {
     },
     {
       name: 'Luffy (One Piece)',
-      image: 'https://i.pinimg.com/736x/da/32/3a/da323af9d7d86dcfb4ba3431eae2f42c.jpg',
+      image: 'https://giffiles.alphacoders.com/354/35458.gif',
       reason: 'His love for freedom and friends makes him unforgettable.'
     }
   ];
@@ -73,41 +73,66 @@ const Favorites: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen className="ion-padding" style={{ background: '#f5f5f5' }}>
-        <h2 style={{ textAlign: 'center', margin: '16px 0', fontWeight: 'bold' }}>
-          Your Favorite Characters
-        </h2>
-        <p style={{ textAlign: 'center', color: '#666' }}>
-          Here's a list of your favorite characters from the show. You can manage them here.
-        </p>
+      <IonContent fullscreen className="ion-padding" style={{ background: '#f0f2f5' }}>
+        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+          <h1 style={{
+            fontSize: '28px',
+            fontWeight: 'bold',
+            color: '#333',
+            marginBottom: '10px',
+          }}>
+            My Favorite Anime Characters
+          </h1>
+          <p style={{ color: '#666', fontSize: '16px' }}>
+            A collection of characters that inspired me most.
+          </p>
+        </div>
 
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '20px',
-            padding: '20px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '24px',
+            padding: '20px',
           }}
         >
           {favoriteCharacters.map((char, index) => (
-            <IonCard key={index} style={{ borderRadius: '12px', boxShadow: '0 6px 18px rgba(0,0,0,0.1)' }}>
+            <IonCard
+              key={index}
+              style={{
+                borderRadius: '16px',
+                boxShadow: '0 10px 25px rgba(0, 0, 0, 0.08)',
+                transition: 'transform 0.3s ease',
+                overflow: 'hidden',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+            >
               <img
                 src={char.image}
                 alt={char.name}
                 style={{
                   width: '100%',
-                  height: '200px',
+                  height: '240px',
                   objectFit: 'cover',
-                  borderTopLeftRadius: '12px',
-                  borderTopRightRadius: '12px'
                 }}
               />
               <IonCardHeader>
-                <IonCardTitle style={{ fontSize: '1.2rem', fontWeight: 'bold', textAlign: 'center' }}>
+                <IonCardTitle style={{
+                  fontSize: '1.3rem',
+                  fontWeight: '600',
+                  textAlign: 'center',
+                  color: '#2c3e50'
+                }}>
                   {char.name}
                 </IonCardTitle>
               </IonCardHeader>
-              <IonCardContent style={{ textAlign: 'center', color: '#444' }}>
+              <IonCardContent style={{
+                textAlign: 'center',
+                fontSize: '15px',
+                color: '#555',
+                padding: '0 12px 16px',
+              }}>
                 {char.reason}
               </IonCardContent>
             </IonCard>
