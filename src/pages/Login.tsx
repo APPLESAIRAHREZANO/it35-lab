@@ -26,6 +26,7 @@ const AlertBox: React.FC<{ message: string; isOpen: boolean; onClose: () => void
   );
 };
 
+
 const Login: React.FC = () => {
   const navigation = useIonRouter();
   const [email, setEmail] = useState('');
